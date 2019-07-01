@@ -1,15 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
 import { Consumer } from "../../context";
 
-const Tracks = () => {
-  return (
-    <Consumer>
-      {value => {
-        console.log(value);
-        return <h1>TRACKS</h1>;
-      }}
-    </Consumer>
-  );
-};
+import Spinner from "../layout/Spinner";
+import Track from "../tracks/Track";
+
+class Tracks extends Component {
+  render() {
+    return (
+      <Consumer>
+        {value => {
+          const { track_list, heading } = value;
+
+          if (track_list === undefined || track_list.length === 0) {
+            return <Spinner />;
+          } else {
+            return (
+              <>
+                <h3 className="text-center mb-4">{heading}</h3>
+                <div className="row">
+                  {track_list.map((item, i) => (
+                    <Track key={i} track={item.track} />
+                  ))}
+                </div>
+              </>
+            );
+          }
+        }}
+      </Consumer>
+    );
+  }
+}
 
 export default Tracks;
