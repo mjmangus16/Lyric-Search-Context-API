@@ -46,7 +46,7 @@ class Lyrics extends Component {
     } else {
       return (
         <>
-          <Link to="/" className="btn btn-darl btn-sm mb-4">
+          <Link to="/" className="btn btn-dark btn-sm mb-4">
             Go Back
           </Link>
           <div className="card">
@@ -72,9 +72,6 @@ class Lyrics extends Component {
             <li className="list-group-item">
               <strong>Explicit Words</strong>:{" "}
               {track.explicit === 0 ? "No" : "Yes"}
-            </li>
-            <li className="list-group-item">
-              <strong>Release Date</strong>: {track.first_release_date}
             </li>
           </ul>
         </>
